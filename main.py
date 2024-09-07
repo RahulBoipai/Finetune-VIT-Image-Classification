@@ -22,7 +22,7 @@ def plot(X_test, y_test, id_label):
     y = y_test.detach()
     label = [id_label[label.item()] for label in y]
     df = pd.DataFrame(dict(x=X_embedded[:,0], y=X_embedded[:,1], label= label))
-    plt.figure(figsize=(8, 8))
+    plt.figure(figsize=(5, 5))
     sns.scatterplot(x="x", y="y", hue=df.label.tolist(),
                     palette=sns.color_palette("hls", 5),
                     data=df).set(title="Extracted feature T-SNE projection")
@@ -72,7 +72,12 @@ def main():
     # if Fine-tuning the model
     if finetune:
         print('Fine-tuning the model...')
-        vit.finetune(train_dataloader, full_finetune=False, num_epochs=10)
+        full_tune = input("Do you want to fully fine-tune the model? (y/n): ")
+        if full_tune.lower() == 'y':
+            full_finetune = True
+        else:
+            full_finetune = False
+        vit.finetune(train_dataloader, full_finetune=full_finetune, num_epochs=10)
     
     #Extract features from the model
     print('Extracting features...')
