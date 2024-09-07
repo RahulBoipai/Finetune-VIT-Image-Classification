@@ -1,7 +1,8 @@
 import torch
 import torch.nn as nn   
 import torchvision.models as models
-
+import torch.optim as optim
+from tqdm.auto import tqdm
 class Trainer:
     def __init__(self, model, dataloader, device, criterion, optimizer, num_epochs=10):
         self.model = model
@@ -43,7 +44,7 @@ class VIT:
     """Vision Transformer (ViT) backbone."""
     
     def __init__(self, device, num_classes=5):
-        self.model = models.vit_b_16(pretrain=True)
+        self.model = models.vit_b_16(weights='DEFAULT')
         self.num_classes = num_classes
         self.device = device
         
@@ -54,18 +55,17 @@ class VIT:
         labels = []
         with torch.inference_mode():
             self.model.eval()
-            for images, labels in dataloader:
-                images = images.to(self.device)
-                features = self.model(images)
-                extracted_features.append(features)
-                labels.append(labels)
+            for X, y in tqdm(dataloader):
+                X = X.to(self.device)
+                features = self.model(X)
+                extracted_features.append(features.cpu())
+                labels.append(y)
         return torch.cat(extracted_features).squeeze(), torch.cat(labels).squeeze()
     
     def forward(self, x):
         return self.model(x)
     
-    def finetune(self, dataloader, full_finetune=False, 
-                criterion=None, optimizer=None, num_epochs=10):
+    def finetune(self, dataloader, full_finetune=False, num_epochs=10):
         """Fine-tune the model."""
         num_features = self.model.heads.head.out_features
         add_fc = nn.Linear(num_features, self.num_classes)
@@ -83,7 +83,15 @@ class VIT:
                 param.requires_grad = False
             for param in self.model.heads.head.parameters():
                 param.requires_grad = True  
-        #train the model          
+        #train the model     
+        criterion = nn.CrossEntropyLoss()
+        if full_finetune:
+            optimizer = optim.Adam(self.model.parameters(), lr=0.001)
+        else:
+            optimizer = optim.Adam([
+                {"params": self.model.heads.head.parameters()},  # Parameters of the existing last fully connected layer
+            ],
+            lr=0.001)     
         trainer = Trainer(self.model, dataloader, self.device, criterion, optimizer, num_epochs)
         self.model = trainer.train_model()
         return self.model
