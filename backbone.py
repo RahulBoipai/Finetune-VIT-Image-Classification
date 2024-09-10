@@ -86,7 +86,7 @@ class VIT:
         #train the model     
         criterion = nn.CrossEntropyLoss()
         if full_finetune:
-            optimizer = optim.Adam(self.model.parameters(), lr=0.001)
+            optimizer = optim.Adam(self.model.parameters(), lr=0.00001) #keep learning rate small, so that learned parameter not forgoten
         else:
             optimizer = optim.Adam([
                 {"params": self.model.heads.head.parameters()},  # Parameters of the existing last fully connected layer
