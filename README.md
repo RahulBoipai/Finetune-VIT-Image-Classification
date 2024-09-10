@@ -22,7 +22,7 @@ pick a classifier:-
  Enter choice: 1
  ```
  Next option ask if you would finetune all weights of add a hidden layer and freeze other layers.
- ```zsh
+ ```bash
  Do you want to fully fine-tune the model? (y/n): y
  ```
 
