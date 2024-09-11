@@ -55,27 +55,27 @@ pick a classifier:-
 
 ### Pretrained
 these are the best score: 
-| Classifer | Acurracy | Precision | Recall | F1-score |
-| --------- | -------- | --------- | ------ | ---------|
-| K-Nearest Neighor | 
-| Support Vector Machine |
-| Randome Foreset |
-| Logistic Regression | 
+| Classifer | Acurracy |  F1-score |
+| --------- | -------- | --------- | 
+| K-Nearest Neighbors | 0.95 |0.95 |
+| Support Vector Machine | 0.98 | 0.98|
+| Random Forest | 0.98 |  0.98 | 
+| Logistic Regression | 0.98 | 0.98 |
 
 ### FineTuned
-| Classifer | Acurracy | Precision | Recall | F1-score |
-| --------- | -------- | --------- | ------ | ---------|
-| K-Nearest Neighor | 
-| Support Vector Machine |
-| Randome Foreset |
-| Logistic Regression | 
+| Classifer | Acurracy | F1-score |
+| --------- | -------- |  ---------|
+| K-Nearest Neighbors| 0.97 |  0.97 |
+| Support Vector Machine | 0.99 |  0.99 |
+| Randome Forest | 0.95 |  0.95 |
+| Logistic Regression | 0.98 | 0.98 | 
 
 ### Full FineTuned
-| Classifer | Acurracy | Precision | Recall | F1-score |
-| --------- | -------- | --------- | ------ | ---------|
-| K-Nearest Neighor | 
-| Support Vector Machine |
-| Randome Foreset |
-| Logistic Regression | 
+| Classifer | Acurracy |  F1-score |
+| --------- | -------- | ---------|
+| K-Nearest Neighbors | 0.96 | 0.96 |
+| Support Vector Machine | 0.96 | 0.96 |
+| Random Forest |0.94 | 0.94 | 
+| Logistic Regression | 0.96 | 0.95 | 
 
 ### Quality of Feature space
