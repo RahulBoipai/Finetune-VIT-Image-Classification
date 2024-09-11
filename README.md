@@ -4,8 +4,26 @@
 ## Overview 
 Used pretrained VIT model from pytorch, the VIT model is used as a feature extractor. In the code you can either use pretrained model or alose finetune using the train data and then test it on test data.
 
+## Setup
+install miniconda to create virtual environment
+```bash
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+~/miniconda3/bin/conda init bash
+~/miniconda3/bin/conda init zsh
+
+```
+for more details regarding installin [miniconda on linux](https://waylonwalker.com/install-miniconda/)
+
+Create environemnt name `vit` from `requirements.txt`
+```bash
+conda create -n vit -r requirements.text
+```
 ## DataFolder
-The format for data will be `classname_train` for train data and `classname_test` for test data. Inside the data folder keep the folder structure. You can use you own custom data here with the following format and it will take the images and associate labels.
+The format for data shoulf be `classname_train` for train data and `classname_test` for test data. Inside the data folder keep the folder structure. You can use you own custom data here with the following format and it will take the images and associate labels.
+For more understanding look at the data folder in repository.
 
 
 ## Run
@@ -33,4 +51,31 @@ pick a classifier:-
  Do you want to fully fine-tune the model? (y/n): y
  ```
 
- 
+## Evaluation
+
+### Pretrained
+these are the best score: 
+| Classifer | Acurracy | Precision | Recall | F1-score |
+| --------- | -------- | --------- | ------ | ---------|
+| K-Nearest Neighor | 
+| Support Vector Machine |
+| Randome Foreset |
+| Logistic Regression | 
+
+### FineTuned
+| Classifer | Acurracy | Precision | Recall | F1-score |
+| --------- | -------- | --------- | ------ | ---------|
+| K-Nearest Neighor | 
+| Support Vector Machine |
+| Randome Foreset |
+| Logistic Regression | 
+
+### Full FineTuned
+| Classifer | Acurracy | Precision | Recall | F1-score |
+| --------- | -------- | --------- | ------ | ---------|
+| K-Nearest Neighor | 
+| Support Vector Machine |
+| Randome Foreset |
+| Logistic Regression | 
+
+### Quality of Feature space
