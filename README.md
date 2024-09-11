@@ -1,11 +1,11 @@
 # Vision Transformer FineTuned Classifier
-[google colab](https://colab.research.google.com/drive/19ySYPRIMFlyPO0hrEfOmucgz_xbM0YOD?authuser=1#scrollTo=6xZnCvBEHcbo)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/19ySYPRIMFlyPO0hrEfOmucgz_xbM0YOD?authuser=1#scrollTo=6xZnCvBEHcbo)
 
 ## Overview 
 Used pretrained VIT model from pytorch, the VIT model is used as a feature extractor. In the code you can either use pretrained model or alose finetune using the train data and then test it on test data.
 
 ## Setup
-install miniconda to create virtual environment
+Install miniconda to create virtual environment.
 ```bash
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
@@ -15,9 +15,9 @@ rm -rf ~/miniconda3/miniconda.sh
 ~/miniconda3/bin/conda init zsh
 
 ```
-for more details regarding installin [miniconda on linux](https://waylonwalker.com/install-miniconda/)
+for more details regarding installing [miniconda on linux.](https://waylonwalker.com/install-miniconda/)
 
-Create environemnt name `vit` from `requirements.txt`
+Create environment name `vit` from `requirements.txt`
 ```bash
 conda create -n vit -r requirements.text
 ```
