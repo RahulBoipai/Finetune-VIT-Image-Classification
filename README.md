@@ -2,7 +2,7 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/19ySYPRIMFlyPO0hrEfOmucgz_xbM0YOD?authuser=1#scrollTo=6xZnCvBEHcbo)
 
 ## Overview 
-Used pretrained VIT model from pytorch, the VIT model is used as a feature extractor. In the code you can either use pretrained model or alose finetune using the train data and then test it on test data.
+Used pretrained VIT model from pytorch, the VIT model is used as a feature extractor. In the code you can either use pretrained model or finetune using the train data and then test it on test data. Then after extracting features from VIT (last hidden layer vector). Then use this as feature to train any standard classifer.
 
 ## Setup
 Install miniconda to create virtual environment.

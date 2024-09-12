@@ -37,7 +37,7 @@ class Trainer:
             epoch_loss = running_loss / len(self.dataloader.dataset)
             epoch_acc = running_corrects.double() / len(self.dataloader.dataset)
 
-            print(f'Epoch {epoch}/{self.num_epochs - 1} Loss: {epoch_loss:.4f} Acc: {epoch_acc:.4f}')
+            print(f'Epoch {epoch+1}/{self.num_epochs } Loss: {epoch_loss:.4f} Acc: {epoch_acc:.4f}')
         return self.model
 
 class VIT:
@@ -87,11 +87,12 @@ class VIT:
         criterion = nn.CrossEntropyLoss()
         if full_finetune:
             optimizer = optim.Adam(self.model.parameters(), lr=0.00001) #keep learning rate small, so that learned parameter not forgoten
+            num_epochs = 15
         else:
             optimizer = optim.Adam([
                 {"params": self.model.heads.head.parameters()},  # Parameters of the existing last fully connected layer
             ],
-            lr=0.001)     
+            lr=0.0001)     #correct learning rate important -- slowly reduce lr
         trainer = Trainer(self.model, dataloader, self.device, criterion, optimizer, num_epochs)
         self.model = trainer.train_model()
         return self.model
